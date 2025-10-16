@@ -1,13 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FitLife360 | Health & Fitness for Long Life</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife 360: Live Strong. Live Long.</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #84cc16; /* Lime 500 */
+            --secondary: #a3e635; /* Lime 300 */
+            --bg-dark: #1f2937; /* Gray 800 */
+            --text-light: #f3f4f6; /* Gray 100 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+        .text-primary { color: var(--primary); }
+        .bg-primary-dark { background-color: #65a30d; }
+        .card {
+            background-color: #374151; /* Gray 700 */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
+        }
+        .nav-link {
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .nav-link.active {
+            border-bottom: 2px solid var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .accordion-content.open {
+            max-height: 500px; /* Large enough value for content */
+            transition: max-height 0.6s ease-in;
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen">
 
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-sm shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="flex items-center space-x-2 text-xl font-bold text-secondary">
+                    <i data-lucide="dumbbell" class="w-6 h-6 text-primary"></i>
+                    <span>FitLife 360</span>
+                </a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#foundation" class="nav-link text-gray-300 hover:text-primary pb-1">Foundation</a>
+                    <a href="#yoga" class="nav-link text-gray-300 hover:text-primary pb-1">Yoga & Flow</a>
+                    <a href="#nutrition" class="nav-link text-gray-300 hover:text-primary pb-1">Nutrition</a>
+                    <a href="#training" class="nav-link text-gray-300 hover:text-primary pb-1">Training</a>
+                    <a href="#lifestyle" class="nav-link text-gray-300 hover:text-primary pb-1">Lifestyle</a>
+                </nav>
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+                    <i data-lucide="menu" class="w-6 h-6 text-primary"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="#foundation" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-primary">Foundation</a>
+            <a href="#yoga" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-primary">Yoga & Flow</a>
+            <a href="#nutrition" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-primary">Nutrition</a>
+            <a href="#training" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-primary">Training</a>
+            <a href="#lifestyle" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-primary">Lifestyle</a>
+        </div>
+    </header>
 
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+
+        <!-- Hero Section (Merged Content) -->
+        <section class="text-center mb-20 p-8 rounded-xl bg-gray-700/50 backdrop-blur-sm border-2 border-primary/30">
+            <h1 class="text-5xl sm:text-7xl font-extrabold mb-4 leading-tight">
+                <span class="text-secondary">Live Strong.</span> <span class="text-primary">Live Long.</span>
+            </h1>
+            <p class="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
+                Your complete guide to building a healthier, stronger, and longer life. Transform your life through balanced wellness, consistent movement, and mindful living.
+            </p>
+            
+        </section>
+
+        <!-- 1. Foundation of Health -->
+        <section id="foundation" class="mb-20">
+            <h2 class="text-4xl font-bold text-center mb-10 border-b-2 border-primary/50 pb-3">The Foundation of Lifelong Health</h2>
+            
+            <!-- Image 1: Kitchen/Hydration -->
+            <div class="flex justify-center mb-8">
+                <img src="https://cdn.gamma.app/aee9bijeoq1jlu5/generated-images/Au59aX5-UnLLMv-_V_CVH.png" 
+                     alt="A woman in a kitchen holding a bottle of water, illustrating hydration and healthy habits" 
+                     class="w-full max-w-xl h-auto rounded-xl shadow-2xl border-2 border-primary/50 object-cover">
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- Card 1: Hydration -->
+                <div class="card p-6 rounded-xl text-center">
+                    <i data-lucide="droplet" class="w-10 h-10 text-primary mx-auto mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">Hydration</h3>
+                    <p class="text-gray-300 text-sm">Drink 8-10 glasses daily to support cellular function, energy, and mental clarity.</p>
+                </div>
+                <!-- Card 2: Quality Sleep -->
+                <div class="card p-6 rounded-xl text-center">
+                    <i data-lucide="moon-star" class="w-10 h-10 text-primary mx-auto mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">Quality Sleep</h3>
+                    <p class="text-gray-300 text-sm">Aim for 7-9 hours nightly. Allows your body to repair, restore, and recharge completely.</p>
+                </div>
+                <!-- Card 3: Posture Care -->
+                <div class="card p-6 rounded-xl text-center">
+                    <i data-lucide="sprout" class="w-10 h-10 text-primary mx-auto mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">Posture Care</h3>
+                    <p class="text-gray-300 text-sm">Maintain proper alignment whether sitting or standing to prevent chronic pain and optimize breathing.</p>
+                </div>
+                <!-- Card 4: Mental Peace -->
+                <div class="card p-6 rounded-xl text-center">
+                    <i data-lucide="brain" class="w-10 h-10 text-primary mx-auto mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">Mental Peace</h3>
+                    <p class="text-gray-300 text-sm">Practice daily mindfulness to reduce stress hormones and enhance overall well-being.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Yoga & Flow (Accordion Section) -->
+        <section id="yoga" class="mb-20">
+            <h2 class="text-4xl font-bold text-center mb-10 border-b-2 border-primary/50 pb-3">Daily Yoga & Mindful Flow</h2>
+            
+            <!-- Image 2: Yoga/Meditation -->
+            <div class="flex justify-center mb-8">
+                <img src="https://cdn.gamma.app/aee9bijeoq1jlu5/generated-images/8SkXXqT0tgppKZygDcRWS.png" 
+                     alt="A woman meditating in a yoga pose outdoors with mountains in the background, illustrating mental peace" 
+                     class="w-full max-w-3xl h-auto rounded-xl shadow-2xl border-2 border-primary/50 object-cover">
+            </div>
+
+            <!-- Accordion 1: Essential Poses -->
+            <div class="mb-4 rounded-xl card overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center p-5 text-left text-xl font-semibold bg-gray-600 hover:bg-gray-500 transition duration-150" aria-expanded="false">
+                    <span>Essential Yoga Poses</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                </button>
+                <div class="accordion-content p-5 bg-gray-700">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="p-4 border border-primary/50 rounded-lg">
+                            <h4 class="font-bold text-secondary mb-1">Downward Dog</h4>
+                            <p class="text-sm">Strengthens arms and legs, stretches spine and hamstrings. Perfect for morning energy.</p>
+                        </div>
+                        <div class="p-4 border border-primary/50 rounded-lg">
+                            <h4 class="font-bold text-secondary mb-1">Child's Pose</h4>
+                            <p class="text-sm">Releases tension in the back, shoulders, and chest. Ideal for evening relaxation and stress relief.</p>
+                        </div>
+                        <div class="p-4 border border-primary/50 rounded-lg">
+                            <h4 class="font-bold text-secondary mb-1">Tree Pose</h4>
+                            <p class="text-sm">Improves balance and core strength while promoting mental focus and stability.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion 2: Daily Routines -->
+            <div class="mb-4 rounded-xl card overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center p-5 text-left text-xl font-semibold bg-gray-600 hover:bg-gray-500 transition duration-150" aria-expanded="false">
+                    <span>Morning Wake-Up & Evening Wind-Down</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                </button>
+                <div class="accordion-content p-5 bg-gray-700">
+                    <div class="space-y-4">
+                        <h4 class="text-2xl font-semibold text-primary">5-Minute Wake-Up</h4>
+                        <ul class="list-disc list-inside space-y-1 ml-4 text-gray-300">
+                            <li>Begin with gentle stretches in bed.</li>
+                            <li>Move to standing sun salutations.</li>
+                            <li>Follow with 3 minutes of deep breathing for clarity.</li>
+                        </ul>
+                        <h4 class="text-2xl font-semibold text-primary pt-3">Evening Wind-Down</h4>
+                        <ul class="list-disc list-inside space-y-1 ml-4 text-gray-300">
+                            <li>Dedicate 15 minutes to restorative poses (Legs-up-the-wall, Reclined Butterfly).</li>
+                            <li>End with a 5-minute guided meditation for deep, rejuvenating sleep.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Nutrition Section -->
+        <section id="nutrition" class="mb-20">
+            <h2 class="text-4xl font-bold text-center mb-10 border-b-2 border-primary/50 pb-3">Eat Smart, Live Long: Nutrition Guidelines</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Col 1: Essential Guidelines -->
+                <div class="lg:col-span-1">
+                    <div class="card p-6 rounded-xl h-full">
+                        <h3 class="text-2xl font-bold text-secondary mb-4">Core Principles</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i data-lucide="apple" class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-1"></i>
+                                <div>
+                                    <p class="font-semibold">Fruits & Vegetables</p>
+                                    <p class="text-sm text-gray-300">Aim for 5-7 servings of colorful produce for antioxidants and immune support.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="beef" class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-1"></i>
+                                <div>
+                                    <p class="font-semibold">Lean Proteins</p>
+                                    <p class="text-sm text-gray-300">Essential for muscle repair and metabolism. Target 0.8g per kg of body weight minimum.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="pill" class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-1"></i>
+                                <div>
+                                    <p class="font-semibold">Vitamins</p>
+                                    <p class="text-sm text-gray-300">Consider a daily multivitamin plus Vitamin D, supporting bone health and overall wellness.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Col 2 & 3: Meal Plans -->
+                <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Meal Plan 1 -->
+                    <div class="card p-6 rounded-xl border-t-4 border-primary">
+                        <h4 class="text-xl font-bold mb-3 text-primary">Balanced Vegetarian</h4>
+                        <ul class="list-disc list-inside ml-4 space-y-1 text-gray-300">
+                            <li>Leafy greens and cruciferous vegetables.</li>
+                            <li>Legumes, beans, and lentils for protein.</li>
+                            <li>Whole grains like quinoa and brown rice.</li>
+                            <li>Nuts, seeds, and healthy fats.</li>
+                        </ul>
+                    </div>
+                    <!-- Meal Plan 2 -->
+                    <div class="card p-6 rounded-xl border-t-4 border-primary">
+                        <h4 class="text-xl font-bold mb-3 text-primary">High-Protein Plan</h4>
+                        <ul class="list-disc list-inside ml-4 space-y-1 text-gray-300">
+                            <li>Lean chicken, fish, and eggs.</li>
+                            <li>Greek yogurt and cottage cheese.</li>
+                            <li>Plant proteins: tofu and tempeh.</li>
+                            <li>Protein-rich snacks throughout the day.</li>
+                        </ul>
+                    </div>
+                    <!-- Meal Plan 3 -->
+                    <div class="card p-6 rounded-xl border-t-4 border-primary">
+                        <h4 class="text-xl font-bold mb-3 text-primary">Weight Loss Focus</h4>
+                        <ul class="list-disc list-inside ml-4 space-y-1 text-gray-300">
+                            <li>Calorie deficit with high nutrient density.</li>
+                            <li>High fiber foods for satiety.</li>
+                            <li>Lean proteins at every meal.</li>
+                            <li>Portion control and mindful eating.</li>
+                        </ul>
+                    </div>
+                    <!-- Meal Plan 4 -->
+                    <div class="card p-6 rounded-xl border-t-4 border-primary">
+                        <h4 class="text-xl font-bold mb-3 text-primary">Detox & Cleanse</h4>
+                        <ul class="list-disc list-inside ml-4 space-y-1 text-gray-300">
+                            <li>Green smoothies and fresh juices.</li>
+                            <li>Anti-inflammatory herbs and spices.</li>
+                            <li>Plenty of water and herbal teas.</li>
+                            <li>Eliminate processed foods temporarily.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Training Section -->
+        <section id="training" class="mb-20">
+            <h2 class="text-4xl font-bold text-center mb-10 border-b-2 border-primary/50 pb-3">Train Your Body, Transform Your Life</h2>
+            
+            <!-- Image 3: Weight Training/Fitness -->
+            <div class="flex justify-center mb-8">
+                <img src="https://cdn.gamma.app/aee9bijeoq1jlu5/generated-images/6eTxC7E65ZlS5ySO-i735.png" 
+                     alt="People in a gym performing squats and strength training with dumbbells" 
+                     class="w-full max-w-4xl h-auto rounded-xl shadow-2xl border-2 border-primary/50 object-cover">
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Training 1: Strength -->
+                <div class="card p-6 rounded-xl">
+                    <i data-lucide="armchair" class="w-8 h-8 text-primary mb-3"></i>
+                    <h3 class="text-xl font-semibold text-secondary mb-2">Strength Training</h3>
+                    <p class="text-sm text-gray-300">Build lean muscle mass with compound movements (squats, deadlifts). Train 3-4 times weekly for metabolism boost and bone protection.</p>
+                </div>
+                <!-- Training 2: Cardio -->
+                <div class="card p-6 rounded-xl">
+                    <i data-lucide="heart-pulse" class="w-8 h-8 text-primary mb-3"></i>
+                    <h3 class="text-xl font-semibold text-secondary mb-2">Cardiovascular Fitness</h3>
+                    <p class="text-sm text-gray-300">Elevate heart rate with running, cycling, or HIIT. Aim for 150 minutes of moderate cardio weekly to strengthen heart and lungs.</p>
+                </div>
+                <!-- Training 3: Endurance -->
+                <div class="card p-6 rounded-xl">
+                    <i data-lucide="run" class="w-8 h-8 text-primary mb-3"></i>
+                    <h3 class="text-xl font-semibold text-secondary mb-2">Endurance Building</h3>
+                    <p class="text-sm text-gray-300">Develop stamina through longer, sustained sessions. Mix steady-state cardio with interval training for improved daily energy.</p>
+                </div>
+                <!-- Training 4: Flexibility -->
+                <div class="card p-6 rounded-xl">
+                    <i data-lucide="move-diagonal" class="w-8 h-8 text-primary mb-3"></i>
+                    <h3 class="text-xl font-semibold text-secondary mb-2">Flexibility Work</h3>
+                    <p class="text-sm text-gray-300">Stretch regularly to maintain range of motion and prevent injury. Use dynamic stretching before and static stretching after workouts.</p>
+                </div>
+            </div>
+
+            <!-- Beginner Roadmap -->
+            <div class="mt-12 bg-gray-700 p-8 rounded-xl border border-primary/50">
+                <h3 class="text-3xl font-bold text-center text-primary mb-6">Your Beginner's Fitness Roadmap</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <div class="text-4xl font-extrabold text-secondary mb-2">01</div>
+                        <h4 class="text-xl font-semibold mb-2">Week 1-2: Foundation</h4>
+                        <p class="text-sm text-gray-300">Learn basic movements, establish routine timing, and focus on consistency over perfection.</p>
+                    </div>
+                    <div class="hidden md:block">
+                        <i data-lucide="chevrons-right" class="w-10 h-10 text-primary mx-auto"></i>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-extrabold text-secondary mb-2">02</div>
+                        <h4 class="text-xl font-semibold mb-2">Week 3-4: Progress</h4>
+                        <p class="text-sm text-gray-300">Add light resistance, increase session duration, and maintain proper form throughout every exercise.</p>
+                    </div>
+                    <div class="hidden md:block">
+                        <i data-lucide="chevrons-right" class="w-10 h-10 text-primary mx-auto"></i>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-extrabold text-secondary mb-2">03</div>
+                        <h4 class="text-xl font-semibold mb-2">Week 5+: Growth</h4>
+                        <p class="text-sm text-gray-300">Challenge yourself with heavier weights, varied exercises, and work towards personal benchmarks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Complete Lifestyle Wellness -->
+        <section id="lifestyle" class="mb-20">
+            <h2 class="text-4xl font-bold text-center mb-10 border-b-2 border-primary/50 pb-3">Complete Lifestyle Wellness</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Card 1: Quality Sleep -->
+                <div class="card p-6 rounded-xl flex items-start space-x-4">
+                    <i data-lucide="bed" class="w-8 h-8 text-primary flex-shrink-0"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold text-secondary mb-1">Quality Sleep</h3>
+                        <p class="text-sm text-gray-300">Maintain consistent sleep/wake times. Create a dark, cool environment. Avoid screens 1 hour before bed for optimal recovery.</p>
+                    </div>
+                </div>
+                <!-- Card 2: Mental Wellness -->
+                <div class="card p-6 rounded-xl flex items-start space-x-4">
+                    <i data-lucide="cloud-lightning" class="w-8 h-8 text-primary flex-shrink-0"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold text-secondary mb-1">Mental Wellness</h3>
+                        <p class="text-sm text-gray-300">Practice mindfulness through meditation, journaling, or breathing exercises. Mental health is critical for longevity and life satisfaction.</p>
+                    </div>
+                </div>
+                <!-- Card 3: Digital Balance -->
+                <div class="card p-6 rounded-xl flex items-start space-x-4">
+                    <i data-lucide="screen-share-off" class="w-8 h-8 text-primary flex-shrink-0"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold text-secondary mb-1">Digital Balance</h3>
+                        <p class="text-sm text-gray-300">Limit recreational screen time. Use the 20-20-20 rule (every 20 minutes, look 20 feet away for 20 seconds) to protect your eyes.</p>
+                    </div>
+                </div>
+                <!-- Card 4: Outdoor Activities -->
+                <div class="card p-6 rounded-xl flex items-start space-x-4">
+                    <i data-lucide="tree-pine" class="w-8 h-8 text-primary flex-shrink-0"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold text-secondary mb-1">Outdoor Activities</h3>
+                        <p class="text-sm text-gray-300">Spend 30+ minutes outside daily. Natural sunlight boosts Vitamin D, regulates circadian rhythms, and reduces stress.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-primary/30 mt-12">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">&copy; 2024 FitLife 360. Fitness is not a goal, it's a way of living.</p>
+            <p class="text-xs text-gray-500 mt-2">All content merged and summarized from your provided wellness guides.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide Icons
+            lucide.createIcons();
+
+            // Mobile Menu Toggle Logic
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                // Change icon based on state
+                const iconElement = mobileMenuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    iconElement.setAttribute('data-lucide', 'menu');
+                } else {
+                    iconElement.setAttribute('data-lucide', 'x');
+                }
+                lucide.createIcons(); // Re-render icon
+            });
+
+            // Smooth Scrolling and Active Nav Link Highlighting
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // Highlight when 50% of section is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const correspondingLink = document.querySelector(`.nav-link[href="#${id}"]`);
+
+                    navLinks.forEach(link => link.classList.remove('active'));
+
+                    if (entry.isIntersecting && correspondingLink) {
+                        correspondingLink.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Smooth scroll for all anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu after clicking a link
+                    if (!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                         document.querySelector('#mobile-menu-btn i').setAttribute('data-lucide', 'menu');
+                         lucide.createIcons();
+                    }
+                });
+            });
+
+            // Accordion Logic
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    // content is the next element sibling (accordion-content div)
+                    const content = header.nextElementSibling;
+                    // icon is the chevron inside the header
+                    const icon = header.querySelector('i');
+                    
+                    // Check if content and icon exist before proceeding with the main toggle logic
+                    if (!content || !icon) {
+                        console.error("Accordion structure error: Missing content or icon element.");
+                        return; // Stop execution if critical elements are missing
+                    }
+
+                    const isExpanded = header.getAttribute('aria-expanded') === 'true';
+
+                    // Close all other accordions
+                    document.querySelectorAll('.accordion-header').forEach(otherHeader => {
+                        if (otherHeader !== header) {
+                            otherHeader.setAttribute('aria-expanded', 'false');
+
+                            const otherContent = otherHeader.nextElementSibling;
+                            const otherIcon = otherHeader.querySelector('i');
+                            
+                            // Explicit check for null/undefined before accessing properties
+                            if (otherContent) {
+                                otherContent.classList.remove('open');
+                                otherContent.style.maxHeight = '0';
+                            }
+                            if (otherIcon) {
+                                otherIcon.style.transform = 'rotate(0deg)';
+                            }
+                        }
+                    });
+
+                    // Toggle current accordion
+                    if (!isExpanded) {
+                        header.setAttribute('aria-expanded', 'true');
+                        content.classList.add('open');
+                        // Set max height dynamically
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        header.setAttribute('aria-expanded', 'false');
+                        content.classList.remove('open');
+                        content.style.maxHeight = '0';
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
